@@ -15,8 +15,9 @@ tools exposed by the production site [clouatre.ca](https://clouatre.ca)
 (`search_posts`, `get_post_markdown`, `get_related_posts`,
 `get_posts_by_concept`). Three tasks (`discover`, `extract`, `traverse`) x
 three models x five iterations were run with a Playwright-driven Chromium,
-the real in-browser `document.modelContext` registration, and the goose agent
-runtime across three site configurations (baseline, delta, rerun). Companion
+the real in-browser `document.modelContext` registration, and the
+[goose](https://github.com/aaif-goose/goose) agent runtime (Agentic AI
+Foundation) across three site configurations (baseline, delta, rerun). Companion
 post: [WebMCP beyond checkout](https://clouatre.ca/posts/webmcp-beyond-checkout/).
 
 ```mermaid
@@ -35,7 +36,7 @@ flowchart TD
 ```
 
 *Figure 1: The evaluation harness pipeline. Each run serves the built site,
-drives goose through the real in-browser tool registration, grades a
+drives the agent through the real in-browser tool registration, grades a
 deterministic rubric, and writes one run JSON; the summarizer and the
 matplotlib figures are derived from those JSONs.*
 
@@ -59,9 +60,9 @@ unbounded `get_post_markdown` response to pages of at most 1,422 against a
 - `scripts/webmcp-eval/harness.ts`: the behavioral eval harness. Serves the
   built site over localhost, launches Playwright Chromium with WebMCP feature
   flags, waits for per-page-kind tool registration, exposes the disclosed
-  tools over a local streamable-HTTP MCP bridge, drives goose headless per
+  tools over a local streamable-HTTP MCP bridge, drives the agent headless per
   run, and grades a deterministic rubric from bridge-recorded payloads plus
-  the goose final response.
+  the agent's final response.
 - `scripts/webmcp-eval/summarize.ts`: median/IQR summary per task-model cell
   from run JSONs.
 - `scripts/webmcp-page-kind.ts`: vendored from the production site; the page-kind
