@@ -1,0 +1,238 @@
+{
+  "generated": "2026-10-04",
+  "tokenizer": "gpt-tokenizer 4.0.0 (o200k_base, exact, local)",
+  "method": "Token count = countTokens(JSON.stringify(toolOutput)), the method in scripts/audit-webmcp-payloads.ts. Each point built with `bun run build` in a git worktree at the listed commit.",
+  "budgets": {
+    "get_post_markdown_page": 2000,
+    "discovery_tools": 600
+  },
+  "points": [
+    {
+      "label": "unbounded",
+      "commit": "1699cd8",
+      "description": "Commit before #1632. get_post_markdown returned the full post Markdown as one string; no pagination or budget. scripts/audit-webmcp-payloads.ts did not exist yet, so each dist/posts/*.md file was counted with the audit method.",
+      "audited_post": "ai-sdlc-governance-stack",
+      "audited_post_full_tokens": 6764,
+      "audited_post_full_tokens_raw_text": 6411,
+      "largest_post": {
+        "slug": "mcp-tool-docs",
+        "tokens": 7493
+      },
+      "posts_counted": 18,
+      "get_post_markdown_full_by_post": [
+        {
+          "slug": "mcp-tool-docs",
+          "tokens": 7493
+        },
+        {
+          "slug": "ai-sdlc-governance-stack",
+          "tokens": 6764
+        },
+        {
+          "slug": "orchestrating-ai-agents-subagent-architecture",
+          "tokens": 6489
+        },
+        {
+          "slug": "prompt-repetition-agent-evaluation",
+          "tokens": 6335
+        },
+        {
+          "slug": "open-weights-structured-output-cost",
+          "tokens": 6313
+        },
+        {
+          "slug": "context-engineering-multi-agent-reliability",
+          "tokens": 5838
+        },
+        {
+          "slug": "ai-approval-gates",
+          "tokens": 5742
+        },
+        {
+          "slug": "decision-frameworks-ai-delivery",
+          "tokens": 5662
+        },
+        {
+          "slug": "ai-adoption-engineering",
+          "tokens": 5620
+        },
+        {
+          "slug": "ai-agents-legacy-roi",
+          "tokens": 5478
+        },
+        {
+          "slug": "rag-legacy-systems",
+          "tokens": 5448
+        },
+        {
+          "slug": "ai-augmented-cicd",
+          "tokens": 5281
+        },
+        {
+          "slug": "agent-ready-website",
+          "tokens": 5000
+        },
+        {
+          "slug": "ai-assisted-development",
+          "tokens": 4976
+        },
+        {
+          "slug": "sre-ai-agents-production",
+          "tokens": 4827
+        },
+        {
+          "slug": "ai-observability-gaps",
+          "tokens": 4767
+        },
+        {
+          "slug": "ai-supply-chain-attack-vectors",
+          "tokens": 4488
+        },
+        {
+          "slug": "zero-downtime-dns-migration",
+          "tokens": 4294
+        }
+      ]
+    },
+    {
+      "label": "paginated",
+      "commit": "8629e9d",
+      "description": "Commit before #1653 (after #1632 pagination and #1651 disclosure). Output of `bun run audit:webmcp`.",
+      "rows": [
+        {
+          "tool": "search_posts",
+          "tokens": 505,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": "fixture excerpts"
+        },
+        {
+          "tool": "get_related_posts",
+          "tokens": 253,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": ""
+        },
+        {
+          "tool": "get_posts_by_concept",
+          "tokens": 462,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": "largest cluster"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1245,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 0"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1415,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 1"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1373,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 2"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1274,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 3"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1161,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 4"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 441,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 5"
+        }
+      ]
+    },
+    {
+      "label": "head",
+      "commit": "289d94d",
+      "description": "origin/main HEAD after #1653 caps. Output of `bun run audit:webmcp`.",
+      "rows": [
+        {
+          "tool": "search_posts",
+          "tokens": 513,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": "fixture excerpts"
+        },
+        {
+          "tool": "get_related_posts",
+          "tokens": 338,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": ""
+        },
+        {
+          "tool": "get_posts_by_concept",
+          "tokens": 469,
+          "budget": 600,
+          "verdict": "PASS",
+          "note": "largest cluster"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1252,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 0"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1422,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 1"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1380,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 2"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1281,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 3"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 1166,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 4"
+        },
+        {
+          "tool": "get_post_markdown",
+          "tokens": 446,
+          "budget": 2000,
+          "verdict": "PASS",
+          "note": "largest post, page 5"
+        }
+      ]
+    }
+  ]
+}

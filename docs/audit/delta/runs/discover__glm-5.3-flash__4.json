@@ -1,0 +1,34 @@
+{
+  "task": "discover",
+  "provider": "zai",
+  "model": "glm-5.3-flash",
+  "iteration": 4,
+  "rubric": {
+    "pass": true,
+    "detail": "search_posts returned target: true; final response names slug: true"
+  },
+  "tokens": {
+    "total": 11594,
+    "input": 11558,
+    "output": 36,
+    "cacheRead": 10368,
+    "cacheWrite": 0
+  },
+  "costUsd": 0.0005075399999999999,
+  "wallClockMs": 9285,
+  "gooseExitCode": 0,
+  "gooseStderr": "",
+  "infraError": null,
+  "recordedAt": "2026-10-04T16:25:01.396Z",
+  "toolCalls": [
+    {
+      "name": "search_posts",
+      "input": {
+        "query": "AI agents human approval gates before acting"
+      },
+      "result": "{\"results\":[{\"title\":\"AI Approval Gates: Engineering Oversight at Machine Speed\",\"slug\":\"/posts/ai-approval-gates/\",\"description\":\"<mark>AI</mark> <mark>Approval</mark> <mark>Gates:</mark> Engineering Oversight at Machine Speed 11 Jun, 2026 • Updated 1 Oct, 2026 • 14 min read | Field CTO, AWS veteran, and HEC Montreal guest lecturer.\"},{\"title\":\"AI SDLC Governance: Three Layers for Engineering Leaders\",\"slug\":\"/posts/ai-sdlc-governance-stack/\",\"description\":\"Top Related Posts. <mark>AI</mark> <mark>Approval</mark> <mark>Gates:</mark> Engineering Oversight at Machine Speed <mark>AI</mark> <mark>approval</mark> <mark>gates:</mark> reversibility-tiered <mark>human-in-the-loop</mark> design with four health metrics that prevent reviewer atrophy at machine speed. <mark>AI</mark> Adoption\"},{\"title\":\"AI-Governed DNS Migration Without Maintenance Windows\",\"slug\":\"/posts/zero-downtime-dns-migration/\",\"description\":\"the <mark>Approval-Gate</mark> Workflow Distribute Risk? The migration ran as a five-phase workflow: Analyze, Research, Plan, Implement, Prepare. Each phase produced a structured artifact and stopped at an explicit <mark>approval</mark> <mark>gate</mark>\"},{\"title\":\"AI Adoption in Engineering: Breaking the 50% Plateau\",\"slug\":\"/posts/ai-adoption-engineering/\",\"description\":\"Top Related Posts. <mark>AI</mark> <mark>Approval</mark> <mark>Gates:</mark> Engineering Oversight at Machine Speed <mark>AI</mark> <mark>approval</mark> <mark>gates:</mark> reversibility-tiered <mark>human-in-the-loop</mark> design with four health metrics that prevent reviewer atrophy at machine speed. <mark>AI</mark> Delivery\"},{\"title\":\"AI Delivery Decision Frameworks: Type 1, Type 2, DACI\",\"slug\":\"/posts/decision-frameworks-ai-delivery/\",\"description\":\"Top Related Posts. <mark>AI</mark> <mark>Approval</mark> <mark>Gates:</mark> Engineering Oversight at Machine Speed <mark>AI</mark> <mark>approval</mark> <mark>gates:</mark> reversibility-tiered <mark>human-in-the-loop</mark> design with four health metrics that prevent reviewer atrophy at machine speed. <mark>AI</mark> Adoption\"},{\"title\":\"AI-Augmented CI/CD: Shift Left Security With Bounded Risk\",\"slug\":\"/posts/ai-augmented-cicd/\",\"description\":\"team agrees that the added <mark>AI</mark> context is worth the residual injection risk. How Does Uncontrolled <mark>AI</mark> Analysis Become a Security Risk? The naive approach feeds <mark>AI</mark> the code diff\"},{\"title\":\"AI-Assisted Development: The Accountability Layer\",\"slug\":\"/posts/ai-assisted-development/\",\"description\":\"whether <mark>human</mark> judgment is structurally required or merely available. How Do Structured Workflows Enforce <mark>Human</mark> Decision Points? The skill workflow used in this practice formalizes the judgment <mark>gates</mark> that distinguish\"},{\"title\":\"SRE for AI Agents: Error Budgets, Trust, and 90 Trials\",\"slug\":\"/posts/sre-ai-agents-production/\",\"description\":\"for <mark>AI</mark> <mark>Agents:</mark> Error Budgets, Trust, and 90 Trials 9 Mar, 2026 • Updated 1 Oct, 2026 • 12 min read | Field CTO, AWS veteran, and HEC Montreal guest\"},{\"title\":\"AI Supply Chain Attacks: New Vectors in Dependencies\",\"slug\":\"/posts/ai-supply-chain-attack-vectors/\",\"description\":\"over <mark>AI-generated</mark> code volume. <mark>AI</mark> <mark>Approval</mark> <mark>Gates:</mark> Engineering Oversight at Machine Speed <mark>AI</mark> <mark>approval</mark> <mark>gates:</mark> reversibility-tiered <mark>human-in-the-loop</mark> design with four health metrics that prevent reviewer atrophy at machine speed. <mark>AI</mark>\"},{\"title\":\"AI Agents in Legacy Systems: ROI Without Modernization\",\"slug\":\"/posts/ai-agents-legacy-roi/\",\"description\":\"<mark>AI</mark> <mark>Agents</mark> in Legacy Systems: ROI Without Modernization 20 Jan, 2026 • Updated 3 Oct, 2026 • 12 min read | Field CTO, AWS veteran, and HEC Montreal guest lecturer.\"}],\"has_more\":true,\"next_offset\":10,\"token_estimate\":973}",
+      "ms": 36
+    }
+  ],
+  "finalResponse": "/posts/ai-approval-gates/"
+}

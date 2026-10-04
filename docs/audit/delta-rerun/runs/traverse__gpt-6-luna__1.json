@@ -1,0 +1,49 @@
+{
+  "task": "traverse",
+  "provider": "openrouter",
+  "model": "openai/gpt-6-luna",
+  "iteration": 1,
+  "rubric": {
+    "pass": true,
+    "detail": "intermediate post seen: true; terminal hub in response: true"
+  },
+  "tokens": {
+    "total": 11510,
+    "input": 11421,
+    "output": 89,
+    "cacheRead": 5211,
+    "cacheWrite": 6204
+  },
+  "costUsd": 0.0008727100000000001,
+  "wallClockMs": 4746,
+  "gooseExitCode": 0,
+  "gooseStderr": "",
+  "infraError": null,
+  "recordedAt": "2026-10-04T20:41:34.551Z",
+  "startPath": "/posts/ai-approval-gates/",
+  "pageKind": "post",
+  "servedTools": [
+    "get_post_markdown",
+    "get_posts_by_concept",
+    "get_related_posts"
+  ],
+  "toolCalls": [
+    {
+      "name": "get_posts_by_concept",
+      "input": {
+        "concept": "governance-oversight"
+      },
+      "result": "{\"clusters\":[{\"id\":\"governance-oversight\",\"name\":\"AI Governance and Human Oversight\",\"hub\":\"ai-sdlc-governance-stack\",\"posts\":[{\"slug\":\"ai-sdlc-governance-stack\",\"title\":\"AI SDLC Governance: Three Layers for Engineering Leaders\",\"url\":\"https://clouatre.ca/posts/ai-sdlc-governance-stack/\",\"pubDate\":\"2026-08-04T09:00:00.000Z\"},{\"slug\":\"ai-approval-gates\",\"title\":\"AI Approval Gates: Engineering Oversight at Machine Speed\",\"url\":\"https://clouatre.ca/posts/ai-approval-gates/\",\"pubDate\":\"2026-06-11T09:00:00.000Z\"},{\"slug\":\"ai-observability-gaps\",\"title\":\"Why Your AI Agent Failed in Production\",\"url\":\"https://clouatre.ca/posts/ai-observability-gaps/\",\"pubDate\":\"2026-02-02T12:00:00.000Z\"},{\"slug\":\"sre-ai-agents-production\",\"title\":\"SRE for AI Agents: Error Budgets, Trust, and 90 Trials\",\"url\":\"https://clouatre.ca/posts/sre-ai-agents-production/\",\"pubDate\":\"2026-03-09T14:00:00.000Z\"},{\"slug\":\"zero-downtime-dns-migration\",\"title\":\"AI-Governed DNS Migration Without Maintenance Windows\",\"url\":\"https://clouatre.ca/posts/zero-downtime-dns-migration/\",\"pubDate\":\"2025-11-06T12:00:00.000Z\"},{\"slug\":\"ai-adoption-engineering\",\"title\":\"AI Adoption in Engineering: Breaking the 50% Plateau\",\"url\":\"https://clouatre.ca/posts/ai-adoption-engineering/\",\"pubDate\":\"2026-05-29T09:34:00.000Z\"},{\"slug\":\"decision-frameworks-ai-delivery\",\"title\":\"AI Delivery Decision Frameworks: Type 1, Type 2, DACI\",\"url\":\"https://clouatre.ca/posts/decision-frameworks-ai-delivery/\",\"pubDate\":\"2026-05-22T10:00:00.000Z\"}]}],\"token_estimate\":375}",
+      "ms": 6
+    },
+    {
+      "name": "get_related_posts",
+      "input": {
+        "slug": "ai-approval-gates"
+      },
+      "result": "{\"posts\":[{\"slug\":\"ai-observability-gaps\",\"title\":\"Why Your AI Agent Failed in Production\",\"url\":\"https://clouatre.ca/posts/ai-observability-gaps/\",\"edgeType\":\"thematic_chain\",\"evidence\":\"approval-gate health metrics require decision provenance instrumentation\",\"weight\":1},{\"slug\":\"decision-frameworks-ai-delivery\",\"title\":\"AI Delivery Decision Frameworks: Type 1, Type 2, DACI\",\"url\":\"https://clouatre.ca/posts/decision-frameworks-ai-delivery/\",\"edgeType\":\"concept_shared\",\"evidence\":\"reversibility-tiered action control and Type 1/Type 2 decision lens are the same reversibility concept in different domains\",\"weight\":0.8},{\"slug\":\"ai-assisted-development\",\"title\":\"AI-Assisted Development: The Accountability Layer\",\"url\":\"https://clouatre.ca/posts/ai-assisted-development/\",\"edgeType\":\"concept_shared\",\"evidence\":\"reviewer atrophy in approval gates and comprehension-loss in AI-assisted development are the same human-judgment-degradation finding\",\"weight\":0.8},{\"slug\":\"ai-assisted-development\",\"title\":\"AI-Assisted Development: The Accountability Layer\",\"url\":\"https://clouatre.ca/posts/ai-assisted-development/\",\"edgeType\":\"citation\",\"evidence\":\"AI Approval Gates: Engineering Oversight at Machine Speed links to AI-Assisted Development: The Accountability Layer\",\"weight\":0.7},{\"slug\":\"ai-augmented-cicd\",\"title\":\"AI-Augmented CI/CD: Shift Left Security With Bounded Risk\",\"url\":\"https://clouatre.ca/posts/ai-augmented-cicd/\",\"edgeType\":\"citation\",\"evidence\":\"AI Approval Gates: Engineering Oversight at Machine Speed links to AI-Augmented CI/CD: Shift Left Security With Bounded Risk\",\"weight\":0.7}],\"has_more\":true,\"next_offset\":5,\"token_estimate\":403}",
+      "ms": 5
+    }
+  ],
+  "finalResponse": "ai-sdlc-governance-stack"
+}
