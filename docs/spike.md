@@ -6,10 +6,8 @@ Status: Complete. Local evidence gathered on the working tree at `a525995` via t
 
 ## See Also
 
-- [Stripe WebMCP checkout audit](https://github.com/clouatre-labs/clouatre.ca/blob/main/docs/audit/2026-10-04-stripe-webmcp-checkout-audit.md) -- source audit and tracking issues
 - [Chrome WebMCP documentation](https://developer.chrome.com/docs/ai/webmcp) -- API reference and origin-trial guidance
-- [Behavioral WebMCP eval epic #1626](https://github.com/clouatre-labs/clouatre.ca/issues/1626) -- consumer of these findings
-- [Spike issue #1629](https://github.com/clouatre-labs/clouatre.ca/issues/1629) -- this spike
+- Production-site Stripe WebMCP checkout audit -- source audit and tracking issues
 
 ## Purpose
 

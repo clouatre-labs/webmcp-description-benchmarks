@@ -1,4 +1,4 @@
-# WebMCP Behavioral Eval Summary (docs/audit/ai-performance/2026-10-04-webmcp-eval/delta-rerun)
+# WebMCP Behavioral Eval Summary
 
 45 runs; 45 rubric passes; 0 infra errors. Efficiency stats exclude failed-rubric and infra-error runs.
 

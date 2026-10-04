@@ -1,6 +1,6 @@
 # WebMCP Behavioral Eval Baseline (2026-10-04)
 
-Baseline measurement for the WebMCP behavioral eval defined in [issue #1626](https://github.com/clouatre-labs/clouatre.ca/issues/1626).
+Baseline measurement for the WebMCP behavioral eval against the production site.
 
 ## Baseline framing
 

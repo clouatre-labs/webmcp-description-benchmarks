@@ -17,7 +17,7 @@ const chart: SlopeOverlayChart = {
   type: "slope-overlay",
   title: "Tokens stayed within 4% of baseline in 7 of 9 cells",
   source:
-    "clouatre.ca 2026-10-04-webmcp-eval baseline and delta-rerun run JSONs",
+    "2026-10-04-webmcp-eval baseline and delta-rerun run JSONs (archived in docs/audit/)",
   categories: [
     "D-Haiku",
     "D-GLM",

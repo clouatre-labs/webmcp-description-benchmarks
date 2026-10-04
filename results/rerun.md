@@ -1,10 +1,10 @@
 # WebMCP Behavioral Eval Rerun and Payload Before/After
 
 Date: 2026-10-04  
-Period covered: delta rerun on `origin/main` at `289d94d` (after #1659 ordering fix and #1660 run context) vs baseline (post-#1632) and original delta (post-#1653/#1651); payload audit at three commits  
+Period covered: delta rerun on the production site build at `289d94d` (after #1659 ordering fix and #1660 run context) vs baseline (post-#1632) and original delta (post-#1653/#1651); payload audit at three commits  
 Data source(s): `scripts/webmcp-eval/harness.ts` (45 runs: 3 tasks x 3 models x 5 iterations), goose 1.53.0 headless, Playwright Chromium with WebMCP flags; `scripts/audit-webmcp-payloads.ts` with gpt-tokenizer 4.0.0  
 Raw data: `docs/audit/delta-rerun/runs/` (rerun), `docs/audit/baseline/runs/`, `docs/audit/delta/runs/`; `docs/audit/2026-10-04-webmcp-payload.json` (payload)  
-Tracking: [#1627](https://github.com/clouatre-labs/clouatre.ca/issues/1627) prerequisites 1 and 2; supersedes the traverse findings in `2026-10-04-webmcp-eval-delta.md`
+Tracking: follow-up findings issue prerequisites 1 and 2; supersedes the traverse findings in `2026-10-04-webmcp-eval-delta.md`
 
 ## BLUF
 

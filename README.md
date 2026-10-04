@@ -11,13 +11,13 @@ Do in-browser WebMCP tool descriptions, progressive disclosure, and response
 caps let real agent runtimes complete content tasks, and at what token cost?
 
 Supplementary data repository for a behavioral evaluation of the four WebMCP
-tools exposed by [clouatre.ca](https://github.com/clouatre-labs/clouatre.ca)
+tools exposed by the production site [clouatre.ca](https://clouatre.ca)
 (`search_posts`, `get_post_markdown`, `get_related_posts`,
 `get_posts_by_concept`). Three tasks (`discover`, `extract`, `traverse`) x
 three models x five iterations were run with a Playwright-driven Chromium,
 the real in-browser `document.modelContext` registration, and the goose agent
 runtime across three site configurations (baseline, delta, rerun). Companion
-blog post: [WebMCP beyond checkout](https://github.com/clouatre-labs/clouatre.ca/pull/1676).
+post: [WebMCP beyond checkout](https://clouatre.ca/posts/webmcp-beyond-checkout/).
 
 ```mermaid
 flowchart TD
@@ -64,10 +64,10 @@ unbounded `get_post_markdown` response to pages of at most 1,422 against a
   the goose final response.
 - `scripts/webmcp-eval/summarize.ts`: median/IQR summary per task-model cell
   from run JSONs.
-- `scripts/webmcp-page-kind.ts`: vendored from clouatre.ca; the page-kind
+- `scripts/webmcp-page-kind.ts`: vendored from the production site; the page-kind
   derivation the harness uses to know which tools a start page discloses.
-- `scripts/audit-webmcp-payloads.ts`: point-in-time snapshot of the clouatre.ca
-  payload budget audit (provenance for the payload JSON; site-coupled, not
+- `scripts/audit-webmcp-payloads.ts`: point-in-time snapshot of the production
+  site's payload budget audit (provenance for the payload JSON; site-coupled, not
   runnable here).
 - `docs/audit/{baseline,delta,delta-rerun}/`: 135 run JSONs (3 batches x 45)
   plus machine-generated `summary.md` per batch.
@@ -106,15 +106,6 @@ bun run scripts/webmcp-eval/harness.ts \
 bun run scripts/webmcp-eval/summarize.ts \
   --run-dir docs/audit/<name> --out docs/audit/<name>/summary.md
 ```
-
-## Provenance
-
-The experiment was designed and first executed inside
-[`clouatre-labs/clouatre.ca`](https://github.com/clouatre-labs/clouatre.ca)
-against epic [#1626](https://github.com/clouatre-labs/clouatre.ca/issues/1626);
-artifacts moved here at clouatre.ca `426f5ec` (2026-10-04). The payload
-budget audit script remains a live CI gate in clouatre.ca; its snapshot here
-is for reproducibility of the archived JSON only.
 
 ## License
 

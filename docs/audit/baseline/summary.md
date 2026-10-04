@@ -1,4 +1,4 @@
-# WebMCP Behavioral Eval Summary (/Users/hugues.clouatre/git/clouatre-labs/clouatre.ca/docs/audit/ai-performance/2026-10-04-webmcp-eval/baseline)
+# WebMCP Behavioral Eval Summary
 
 45 runs; 44 rubric passes; 0 infra errors. Efficiency stats exclude failed-rubric and infra-error runs.
 

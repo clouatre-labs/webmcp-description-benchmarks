@@ -4,7 +4,7 @@ Date: 2026-10-04
 Period covered: delta run on post-#1653/#1651 build vs baseline from post-#1632 build  
 Data source(s): `scripts/webmcp-eval/harness.ts` (45 runs: 3 tasks x 3 models x 5 iterations), goose headless, Playwright Chromium with WebMCP flags  
 Raw data: `docs/audit/delta/runs/` (delta) and `docs/audit/baseline/runs/` (baseline)  
-Tracking: [#1626](https://github.com/clouatre-labs/clouatre.ca/issues/1626); results feed [#1627](https://github.com/clouatre-labs/clouatre.ca/issues/1627)
+Tracking: behavioral WebMCP eval epic; results feed the follow-up findings issue
 
 ## BLUF
 
