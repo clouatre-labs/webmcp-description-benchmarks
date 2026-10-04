@@ -19,6 +19,10 @@ the real in-browser `document.modelContext` registration, and the goose agent
 runtime across three site configurations (baseline, delta, rerun). Companion
 blog post: [WebMCP beyond checkout](https://github.com/clouatre-labs/clouatre.ca/pull/1676).
 
+![Evaluation harness architecture: built site, Playwright Chromium with WebMCP flags, modelContext registration, local MCP bridge, goose runtime, deterministic rubric, run JSONs, summarizer](docs/figures/architecture.svg)
+
+*Figure 1: The evaluation harness pipeline. Each run serves the built site, drives goose through the real in-browser tool registration, grades a deterministic rubric, and writes one run JSON; the summarizer and the figures in this repository are derived from those JSONs.*
+
 ## Status
 
 **45/45 rubric passes with zero infra errors in the latest batch; token
@@ -57,6 +61,22 @@ unbounded `get_post_markdown` response to pages of at most 1,422 against a
   `registerTool` semantics, goose per-run model selection and token usage).
 - `results/`: the three written audit reports (baseline, delta, rerun).
 - `data/charts/`: chart source data for the companion post's figures.
+- `figures/`: publication-quality figures (Python scripts alongside their
+  rendered SVGs, deterministic, rendered from the committed run JSONs).
+
+## Figures
+
+Rerun on the fixed site held median tokens near baseline while keeping every
+payload under budget. Scripts in `figures/` regenerate the SVGs with
+`uv run --with matplotlib python figures/<script>.py`.
+
+![Median total tokens per task-model cell, baseline versus rerun grouped bars](figures/fig1-token-medians.svg)
+
+*Figure 2: Median total tokens per task-model cell (3 tasks x 3 models), baseline versus rerun. Rerun medians landed within 4% of baseline in 7 of 9 cells; the exceptions are extract, where Haiku's median rose 26% and GLM's fell 10%.*
+
+![WebMCP payload tokens at three site commits versus the 2,000 and 600 token budgets](figures/fig2-payload-budget.svg)
+
+*Figure 3: WebMCP payload tokens at three site commits against the budgets. The unbounded `get_post_markdown` response fell from 6,764 tokens to pages of at most 1,422 against the 2,000-token budget, and every discovery tool response stays under the 600-token budget.*
 
 ## Running the harness
 

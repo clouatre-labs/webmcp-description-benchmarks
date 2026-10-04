@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "results/**"
+      - "scripts/**"
+      - "**/*.md"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "results/**"
+      - "scripts/**"
+      - "**/*.md"
+      - ".github/workflows/ci.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate dataset
+    runs-on: ubuntu-26.04-arm
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+      - name: Validate dataset integrity
+        run: bun scripts/validate-data.ts
+      - name: Lint with markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
+        with:
+          globs: |
+            **/*.md
+
+  ci-result:
+    name: CI Result
+    needs: [validate]
+    if: always()
+    runs-on: ubuntu-26.04-arm
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Aggregate results
+        run: |
+          if [ "${{ needs.validate.result }}" != "success" ]; then
+            echo "validate: ${{ needs.validate.result }}"
+            exit 1
+          fi
+          echo "All CI jobs passed"
