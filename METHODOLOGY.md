@@ -29,7 +29,9 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
 - The site is served from `dist/` over localhost (secure context required by
   WebMCP); Chromium is launched with
   `--enable-features=WebMCP --enable-blink-features=WebMCP`.
-- The in-browser tools are exposed to goose through a local streamable-HTTP
+- The in-browser tools are exposed to
+  [goose](https://github.com/aaif-goose/goose) (Agentic AI Foundation)
+  through a local streamable-HTTP
   MCP bridge speaking MCP 2026-07-28 sessionless discovery only.
 - goose 1.53.0 headless, one `goose run` per iteration with
   `GOOSE_TEMPERATURE=0.3`, `GOOSE_SEED=42`, `--max-turns 12`.
@@ -40,11 +42,11 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
 ## Grading and accounting
 
 - Each run is graded by a deterministic rubric over bridge-recorded tool
-  payloads plus the goose final response. No retries; genuine rubric FAILs
+  payloads plus the agent's final response. No retries; genuine rubric FAILs
   are kept as data. Only infra failures (browser, flags, auth) invalidate a
   run; none occurred in any archived batch.
 - Token counts come from provider usage fields (`metadata.total_tokens` in
-  goose JSON output), applied uniformly across models.
+  goose JSON output fields), applied uniformly across models.
 - Summaries report median and IQR per task-model cell; efficiency stats
   exclude failed-rubric and infra-error runs.
 
