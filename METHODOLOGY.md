@@ -1,7 +1,7 @@
 # Methodology
 
-Behavioral evaluation of the WebMCP tool surface exposed by
-[clouatre.ca](https://github.com/clouatre-labs/clouatre.ca). This document is
+Behavioral evaluation of the WebMCP tool surface exposed by the production
+site [clouatre.ca](https://clouatre.ca). This document is
 the protocol for the batches archived in `docs/audit/`; the enablement spike
 that established the harness mechanics is in [`docs/spike.md`](docs/spike.md),
 and the three written reports are in [`results/`](results/).
@@ -35,7 +35,7 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
   `GOOSE_TEMPERATURE=0.3`, `GOOSE_SEED=42`, `--max-turns 12`.
 - Playwright 1.63.0 / Chromium 153.0.8010.12; Bun 1.4.0, macOS arm64.
 - Fixed dates: baseline and delta captured 2026-10-04; rerun on
-  clouatre.ca `origin/main` at `289d94d`.
+  the production site build at commit `289d94d`.
 
 ## Grading and accounting
 
@@ -50,7 +50,7 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
 
 ## Batch history and comparability
 
-| Batch | clouatre.ca state | Note |
+| Batch | Site state | Note |
 | --- | --- | --- |
 | baseline | post-#1632 pagination | one rubric FAIL (extract, claude-haiku-4-5, iter 1) |
 | delta | + #1653 caps, #1651 progressive disclosure | harness adapted to per-task registries |
@@ -69,6 +69,6 @@ counts at three site commits (unbounded, paginated, capped), counted as
 `countTokens(JSON.stringify(toolOutput))` with gpt-tokenizer 4.0.0
 (o200k_base, exact, local), the method of `scripts/audit-webmcp-payloads.ts`
 (snapshot archived in `scripts/`). Each point was built with `bun run build`
-in a git worktree at the listed clouatre.ca commit. The live budget gate
-(2,000 tokens per `get_post_markdown` page, 600 for discovery tools) runs in
-clouatre.ca CI.
+in a git worktree at the listed site commit. The same budgets
+(2,000 tokens per `get_post_markdown` page, 600 for discovery tools) are
+enforced as a CI gate on the production site.

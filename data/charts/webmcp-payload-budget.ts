@@ -12,7 +12,7 @@ const chart: BarChart = {
   id: "webmcp-payload-budget",
   type: "bar",
   title: "Paging cut one 6,764-token response to pages of 1,422 or less",
-  source: "clouatre.ca docs/audit/audit-data-2026-10-04-webmcp-payload.json",
+  source: "docs/audit/2026-10-04-webmcp-payload.json (archived copy)",
   unit: " tokens",
   series: [
     { label: "Unbounded full post", value: 6764 },
