@@ -2,6 +2,8 @@
 # Median total tokens per task-model cell, baseline vs delta-rerun.
 # Reads the committed run JSONs; rubric-failing runs are excluded
 # (one baseline extract/claude-haiku-4-5 run), matching summary.md.
+# Rendered output is an opaque PNG (300 dpi), following the house
+# figure standard in clouatre-labs/prompt-repetition-experiments.
 
 import glob
 import json
@@ -16,10 +18,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 REPO = Path(__file__).resolve().parents[1]
-BATCHES = [
-    ("Baseline", "baseline", "#0072B2"),
-    ("Rerun", "delta-rerun", "#E69F00"),
-]
+BASELINE_COLOR = "#1f77b4"
+RERUN_COLOR = "#ff7f0e"
 TASKS = ["discover", "extract", "traverse"]
 MODELS = [
     ("claude-haiku-4-5", "Haiku"),
@@ -39,58 +39,58 @@ def medians(batch):
     }
 
 
-data = {label: medians(batch) for label, batch, _ in BATCHES}
+baseline = medians("baseline")
+rerun = medians("delta-rerun")
 
-fig, ax = plt.subplots(figsize=(11, 5))
+fig, ax = plt.subplots(figsize=(10, 5))
 
-x = np.arange(len(TASKS) * len(MODELS))
+cells = [(t, m) for t in TASKS for m, _ in MODELS]
+x = np.arange(len(cells))
 width = 0.38
-labels = []
-for task in TASKS:
-    for _, mlabel in MODELS:
-        labels.append(f"{mlabel}\n{task[:3].capitalize()}")
+
+base_vals = [baseline[c] for c in cells]
+rerun_vals = [rerun[c] for c in cells]
+
+bars_base = ax.bar(x - width / 2, base_vals, width,
+                   label="Baseline", color=BASELINE_COLOR, zorder=3)
+bars_rerun = ax.bar(x + width / 2, rerun_vals, width,
+                    label="Rerun", color=RERUN_COLOR, zorder=3)
+
+
+def format_value(v):
+    return f"{v/1000:.1f}K"
+
+
+for bars, vals in [(bars_base, base_vals), (bars_rerun, rerun_vals)]:
+    for bar, v in zip(bars, vals):
+        ax.text(bar.get_x() + bar.get_width() / 2, v + 1500,
+                format_value(v), ha="center", va="bottom",
+                fontsize=8, fontweight="bold")
 
 within = 0
-for k, (label, batch, color) in enumerate(BATCHES):
-    vals = [
-        data[label][(t, m)] for t in TASKS for m, _ in MODELS
-    ]
-    bars = ax.bar(
-        x + (k - 0.5) * width, vals, width, label=label,
-        color=color, zorder=3,
-    )
-    for bi, bar in enumerate(bars):
-        h = bar.get_height()
-        ax.text(
-            bar.get_x() + bar.get_width() / 2, h * 1.04, f"{h/1000:.1f}K",
-            ha="center", va="bottom", fontsize=8, fontweight="bold",
-        )
-    if k == 1:
-        for bi, (t, m) in enumerate(
-            [(t, m) for t in TASKS for m, _ in MODELS]
-        ):
-            base = data["Baseline"][(t, m)]
-            delta = (data["Rerun"][(t, m)] - base) / base * 100
-            if abs(delta) <= 4:
-                within += 1
-            ax.text(
-                x[bi], 128000, f"{delta:+.0f}%", ha="center", va="bottom",
-                fontsize=7, color="0.35",
-            )
+for i, c in enumerate(cells):
+    delta = (rerun_vals[i] - base_vals[i]) / base_vals[i] * 100
+    if abs(delta) <= 4:
+        within += 1
+    ax.text(x[i], 133000, f"{delta:+.1f}%", ha="center", va="bottom",
+            fontsize=8, color="0.35")
 
 ax.set_ylabel("Median total tokens (rubric-passing runs)", fontsize=11)
 ax.set_title(
-    f"Rerun medians within 4% of baseline in {within} of 9 cells",
-    fontsize=12,
+    f"Rerun medians within 4% of baseline in {within} of 9 cells "
+    "(deltas above each cell)", fontsize=12,
 )
-ax.set_ylim(0, 140000)
+ax.set_ylim(0, 145000)
 ax.yaxis.grid(True, linestyle="--", alpha=0.4, zorder=0)
 ax.set_axisbelow(True)
+
+labels = [f"{label}\n{task[:3].capitalize()}"
+          for task in TASKS for _, label in MODELS]
 ax.set_xticks(x)
-ax.set_xticklabels(labels, fontsize=8)
-ax.legend(loc="upper left", fontsize=9)
+ax.set_xticklabels(labels, fontsize=9)
+ax.legend(loc="upper left", bbox_to_anchor=(0.0, 0.92), fontsize=9)
 
 fig.tight_layout()
-out = Path(__file__).with_suffix(".svg")
-fig.savefig(out, bbox_inches="tight", transparent=True)
+out = Path(__file__).with_suffix(".png")
+fig.savefig(out, dpi=300, bbox_inches="tight")
 print(f"Saved {out}")
