@@ -50,7 +50,7 @@ Rerun unchanged:
 
 ```sh
 bun run scripts/webmcp-eval/harness.ts \
-  --output-dir docs/audit/ai-performance/<date>-webmcp-eval/delta --iterations 5
+  --output-dir docs/audit/<date>-delta --iterations 5
 bun run scripts/webmcp-eval/summarize.ts --run-dir <delta dir> \
   --out <delta dir>/summary.md
 ```
