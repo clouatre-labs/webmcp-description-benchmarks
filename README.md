@@ -58,13 +58,15 @@ claude-haiku-4-5 and glm-5.3-flash; rerun higher in discover for gpt-6-luna,
 extract for claude-haiku-4-5, and traverse for gpt-6-luna and
 glm-5.3-flash).
 
+*Table 1: The three archived batches.*
+
 | Batch | Site config | Rubric passes | Headline |
 | --- | --- | --- | --- |
 | [baseline](results/baseline.md) | post-pagination (#1632) | 44/45 | prompt-ambiguity failures fixed, 15/15 traverse |
 | [delta](results/delta.md) | + caps and progressive disclosure (#1653/#1651) | 45/45 | caps induce a traverse retry loop for 2 of 3 models |
 | [rerun](results/rerun.md) | + ordering fix (#1659) | 45/45 | retry loop gone; tokens within 4% of baseline in 7/9 cells |
 
-*Table 1: The Stripe checkout benchmark against this blog's rerun; per-cell medians in Table 3.*
+*Table 2: The Stripe checkout benchmark against this blog's rerun; per-cell medians in Figure 2 and [results/comparison-stats.md](results/comparison-stats.md).*
 
 | Dimension | Stripe checkout | This blog, read-only |
 | --- | --- | --- |
