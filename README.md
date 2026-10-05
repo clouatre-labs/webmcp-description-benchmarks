@@ -47,7 +47,16 @@ medians within 4% of baseline in 7 of 9 cells.** Progressive disclosure plus
 response caps held task completion without reducing tokens; the earlier
 pagination change, not the caps, is what bounded payloads (6,764 tokens in one
 unbounded `get_post_markdown` response to pages of at most 1,422 against a
-2,000-token budget). Full findings: [results/rerun.md](results/rerun.md).
+2,000-token budget). Full findings: [results/rerun.md](results/rerun.md). Statistical comparison
+of rerun vs baseline with composite scores and exact Mann-Whitney U tests is
+in [results/comparison-stats.md](results/comparison-stats.md): composite
+scores match rubric pass/fail in 89 of the 90 executed runs (the baseline
+extract run for claude-haiku-4-5, iteration 1, scores 0.5 against a rubric
+FAIL), no composite difference is significant in any of the nine cells, and
+six cells show significant token differences (rerun lower in discover for
+claude-haiku-4-5 and glm-5.3-flash; rerun higher in discover for gpt-6-luna,
+extract for claude-haiku-4-5, and traverse for gpt-6-luna and
+glm-5.3-flash).
 
 | Batch | Site config | Rubric passes | Headline |
 | --- | --- | --- | --- |
@@ -76,6 +85,11 @@ unbounded `get_post_markdown` response to pages of at most 1,422 against a
   the agent's final response.
 - `scripts/webmcp-eval/summarize.ts`: median/IQR summary per task-model cell
   from run JSONs.
+- `scripts/webmcp-eval/compare.ts`: composite rubric scores and exact
+  Mann-Whitney comparison of rerun vs baseline per task-model cell (writes
+  `results/comparison-stats.md`).
+- `scripts/webmcp-eval/compare.test.ts`, `scripts/webmcp-eval/summarize.test.ts`:
+  bun tests for the stats and summary helpers.
 - `scripts/webmcp-page-kind.ts`: vendored from the production site; the page-kind
   derivation the harness uses to know which tools a start page discloses.
 - `scripts/audit-webmcp-payloads.ts`: point-in-time snapshot of the production
