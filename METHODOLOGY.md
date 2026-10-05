@@ -48,7 +48,9 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
 - Token counts come from provider usage fields (`metadata.total_tokens` in
   goose JSON output fields), applied uniformly across models.
 - Summaries report median and IQR per task-model cell; efficiency stats
-  exclude failed-rubric and infra-error runs.
+  exclude failed-rubric and infra-error runs. Wall clock was recorded per run
+  but embeds provider API latency, so cross-batch duration reads are
+  directional.
 
 ## Batch history and comparability
 

@@ -55,6 +55,17 @@ unbounded `get_post_markdown` response to pages of at most 1,422 against a
 | [delta](results/delta.md) | + caps and progressive disclosure (#1653/#1651) | 45/45 | caps induce a traverse retry loop for 2 of 3 models |
 | [rerun](results/rerun.md) | + ordering fix (#1659) | 45/45 | retry loop gone; tokens within 4% of baseline in 7/9 cells |
 
+*Table 1: The Stripe checkout benchmark against this blog's rerun; per-cell medians in Table 3.*
+
+| Dimension | Stripe checkout | This blog, read-only |
+| --- | --- | --- |
+| Workload | Purchase; each step drops prior tools | Read-only; tools stay valid |
+| Tool surface | Disclosure follows checkout state | Four tools cut to two or three |
+| Completion | 100% in both arms | 45/45 rerun vs 44/45 baseline |
+| Tokens | 42% fewer | Within 4% in seven of nine cells |
+| Tool calls | 38% fewer | Flat; one to six per run, one rerun outlier at eight |
+| Duration | 39% faster | Mixed by cell; batch median 6.5 s vs 7.6 s |
+
 ## Structure
 
 - `scripts/webmcp-eval/harness.ts`: the behavioral eval harness. Serves the
