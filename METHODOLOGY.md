@@ -50,7 +50,9 @@ progressive-disclosure behavior rather than a four-tools-everywhere surface.
 - Summaries report median and IQR per task-model cell; efficiency stats
   exclude failed-rubric and infra-error runs. Wall clock was recorded per run
   but embeds provider API latency, so cross-batch duration reads are
-  directional.
+  directional. The rubric is deterministic code in the harness, so scorer
+  blinding (as used in sibling experiments with LLM scorers) is not applicable
+  here.
 
 ## Batch history and comparability
 
@@ -65,6 +67,13 @@ executed on `/` with all four tools disclosed, delta and rerun runs on
 per-task pages with filtered registries. Commercial APIs are not bitwise
 deterministic even at temperature 0 with seeds; n = 5 per cell supports
 directional reads only.
+
+## Pre-registration
+
+The three archived batches were not pre-registered; all reported comparisons
+are post-hoc and exploratory. Future batches will declare their primary
+comparison, metric, and alpha in this document before the first run. The
+analysis implementation is `scripts/webmcp-eval/compare.ts`.
 
 ## Payload audit
 

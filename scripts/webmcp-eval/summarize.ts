@@ -46,13 +46,13 @@ interface CellStats {
   iqrWallMs: [number, number] | null;
 }
 
-function median(xs: number[]): number {
+export function median(xs: number[]): number {
   const s = [...xs].sort((a, b) => a - b);
   const mid = Math.floor(s.length / 2);
   return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
 }
 
-function quantile(xs: number[], q: number): number {
+export function quantile(xs: number[], q: number): number {
   const s = [...xs].sort((a, b) => a - b);
   const pos = (s.length - 1) * q;
   const lo = Math.floor(pos);
@@ -60,7 +60,7 @@ function quantile(xs: number[], q: number): number {
   return lo === hi ? s[lo] : s[lo] + (s[hi] - s[lo]) * (pos - lo);
 }
 
-function iqr(xs: number[]): [number, number] {
+export function iqr(xs: number[]): [number, number] {
   return [quantile(xs, 0.25), quantile(xs, 0.75)];
 }
 
@@ -176,4 +176,5 @@ function main() {
   }
 }
 
-main();
+// Run CLI only when executed directly, so tests can import pure functions.
+if (process.argv[1]?.endsWith("summarize.ts")) main();
