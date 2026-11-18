@@ -135,6 +135,10 @@ bun run scripts/webmcp-eval/summarize.ts \
   --run-dir docs/audit/<name> --out docs/audit/<name>/summary.md
 ```
 
+## Citation
+
+If you cite this work, use [CITATION.cff](CITATION.cff): it is the single source of truth for citation metadata (title, authors, version, DOI, blog write-up) and GitHub renders it under "Cite this repository".
+
 ## License
 
 Apache-2.0.
